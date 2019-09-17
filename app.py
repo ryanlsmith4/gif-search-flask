@@ -2,14 +2,17 @@ from flask import Flask, render_template, request
 import requests
 import json
 import os
+# had to run pip install python-dotenv // to get flask to see it the module
 from dotenv import load_dotenv
 
 app = Flask(__name__)
+# instantiate the import to have access to .env vars
 load_dotenv()
 
 @app.route('/')
 def index():
     """Return homepage."""
+  # top level var declare to have acces throughout the app
     api_key = os.getenv("API_KEY")
     #  Extract the query term from url using request.args.get()
     name = request.args.get('gif')
