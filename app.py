@@ -12,7 +12,6 @@ def index():
     """Return homepage."""
     api_key = os.getenv("API_KEY")
     #  Extract the query term from url using request.args.get()
-    # name = re
     name = request.args.get('gif')
     if name:
         #  Make 'params' dictionary containing:
@@ -34,18 +33,18 @@ def index():
         if r.status_code == 200:
         # load the GIFs using the urls for the smaller GIF sizes
           result = json.loads(r.content)
-        #  Using dictionary notation, get the 'results' field of the JSON,
+        # Using dictionary notation, get the 'results' field of the JSON,
         # which contains the GIFs as a list
           result_dict = result['results']
           result_list = []
           for gif in result_dict:
             result_list.append(gif['media'][0]['tinygif']['url'])
-          return render_template("index.html", gifs_list=result_list)
+          return render_template("index.html", gifs_list = result_list)
         else:
           top_ten_list = "Failed Response"
-        #  Render the 'index.html' template, passing the list of gifs as a
+        # Render the 'index.html' template, passing the list of gifs as a
         # named parameter called 'gifs'
-          return render_template("index.html", gifs_list=top_ten_list)
+          return render_template("index.html", gifs_list = top_ten_list)
     else:
         params = {
           'locale' : 'en_US',
@@ -58,7 +57,6 @@ def index():
           popular_gifs = json.loads(r.content)
           popular_gifs_list = popular_gifs['results']
           for gif in popular_gifs_list:
-            # print(gif['media'][0]['tinygif']['url'])
             featured_list.append(gif['media'][0]['tinygif']['url'])
           return render_template("index.html", gifs_list = featured_list)
 
