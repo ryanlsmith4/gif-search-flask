@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+{% extends "base.html"%}
+<!-- TODO: Extend 'base.html' and put content into a block 'body' to match -->
+{% block title %} WOW {% endblock %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+    <form>
+        <p><input type="text" name="gif" placeholder="Which Gif?"></p>
+        <p><button type="submit">Search</button></p>
+      </form>
+  </nav>
+
+
+    <div>
+      <!-- TODO: For each gif, include the 'gif.html' template to display it -->
+      {% for gif in gifs_list %}
+      <p>here</p>
+      <img src="{{gif}}" alt="Nothing">
+      {% endfor %}
+    </div>
+    {% endblock %}
+
+{% block other %}
+<div>
+  <p>
+    Hello there!
+  </p>
+</div> 
+  {% endblock %}
+
+<!-- TODO: Make an HTML form containing a search box and a submit button to add
+    the search term to the query string. The form should have a target of '/' to
+    send us to the same route. -->
+
+<!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
+
