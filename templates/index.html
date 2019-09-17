@@ -25,6 +25,7 @@
       <!-- TODO: For each gif, include the 'gif.html' template to display it -->
       {% for gif in gifs_list %}
       <img src="{{gif}}" alt="Nothing">
+      <a href="{{gif}}">Link to share</a>
       {% endfor %}
     </div>
     {% endblock %}
